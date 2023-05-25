@@ -3,6 +3,7 @@ import todoRouter from './routes/todo';
 import sessionRouter from './routes/session';
 import repoNameRouter from './routes/RepoName';
 import repoCountRouter from './routes/RepoCount';
+import planRouter from './routes/plan';
 
 //
 const Router = {
@@ -85,6 +86,22 @@ const Router = {
     }
     if (pathname === "/repo_count/get_list") {
       response = await repoCountRouter.get_list(req, res, env);  
+    }
+    //planRouter
+    if (pathname === "/plan/create") {
+      response = await planRouter.create(req, res, env);  
+    }
+    if (pathname === "/plan/delete") {
+      response = await planRouter.delete(req, res, env);  
+    }
+    if (pathname === "/plan/update") {
+      response = await planRouter.update(req, res, env);  
+    }
+    if (pathname === "/plan/get_list") {
+      response = await planRouter.get_list(req, res, env);  
+    }
+    if (pathname === "/plan/get") {
+      response = await planRouter.get(req, res, env);  
     }
 
     //@ts-ignore
