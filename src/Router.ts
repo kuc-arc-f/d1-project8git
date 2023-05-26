@@ -4,7 +4,7 @@ import sessionRouter from './routes/session';
 import repoNameRouter from './routes/RepoName';
 import repoCountRouter from './routes/RepoCount';
 import planRouter from './routes/plan';
-
+import erChartRouter from './routes/ErChart';
 //
 const Router = {
   /**
@@ -103,7 +103,22 @@ const Router = {
     if (pathname === "/plan/get") {
       response = await planRouter.get(req, res, env);  
     }
-
+    //erChartRouter
+    if (pathname === "/er_chart/create") {
+      response = await erChartRouter.create(req, res, env);  
+    }
+    if (pathname === "/er_chart/get_list") {
+      response = await erChartRouter.get_list(req, res, env);  
+    }
+    if (pathname === "/er_chart/get") {
+      response = await erChartRouter.get(req, res, env);  
+    }
+    if (pathname === "/er_chart/delete") {
+      response = await erChartRouter.delete(req, res, env);  
+    }   
+    if (pathname === "/er_chart/update") {
+      response = await erChartRouter.update(req, res, env);  
+    }       
     //@ts-ignore
     return response;
   },
