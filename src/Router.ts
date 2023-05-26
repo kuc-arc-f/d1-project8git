@@ -5,6 +5,9 @@ import repoNameRouter from './routes/RepoName';
 import repoCountRouter from './routes/RepoCount';
 import planRouter from './routes/plan';
 import erChartRouter from './routes/ErChart';
+import taskItemRouter from './routes/TaskItem';
+import projectRouter from './routes/Project';
+
 //
 const Router = {
   /**
@@ -118,7 +121,39 @@ const Router = {
     }   
     if (pathname === "/er_chart/update") {
       response = await erChartRouter.update(req, res, env);  
-    }       
+    }   
+    //taskItemRouter
+    if (pathname === "/tasks/create") {
+      response = await taskItemRouter.create(req, res, env);  
+    }
+    if (pathname === "/tasks/get_list") {
+      response = await taskItemRouter.get_list(req, res, env);  
+    }
+    if (pathname === "/tasks/get") {
+      response = await taskItemRouter.get(req, res, env);  
+    }
+    if (pathname === "/tasks/delete") {
+      response = await taskItemRouter.delete(req, res, env);  
+    }
+    if (pathname === "/tasks/update") {
+      response = await taskItemRouter.update(req, res, env);  
+    }
+    //projectRouter
+    if (pathname === "/project/create") {
+      response = await projectRouter.create(req, res, env);  
+    }
+    if (pathname === "/project/get_list") {
+      response = await projectRouter.get_list(req, res, env);  
+    }
+    if (pathname === "/project/get") {
+      response = await projectRouter.get(req, res, env);  
+    }    
+    if (pathname === "/project/delete") {
+      response = await projectRouter.delete(req, res, env);  
+    }   
+    if (pathname === "/project/update") {
+      response = await projectRouter.update(req, res, env);  
+    }            
     //@ts-ignore
     return response;
   },

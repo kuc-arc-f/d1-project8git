@@ -67,6 +67,36 @@ CREATE TABLE "ErChart" (
     "content" TEXT,
     "userId" INTEGER
 );
+DROP TABLE IF EXISTS TaskItem;
+CREATE TABLE "TaskItem" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME,
+    "projectId" INTEGER,
+    "title" TEXT,
+    "content" TEXT,
+    "complete" DATETIME,
+    "userId" INTEGER,
+    "status" TEXT
+);
+DROP TABLE IF EXISTS Project;
+CREATE TABLE "Project" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME,
+    "name" TEXT,
+    "InveiteCode" TEXT,
+    "userId" INTEGER
+);
+
+DROP TABLE IF EXISTS ProjectMember;
+CREATE TABLE "ProjectMember" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME,
+    "projectId" INTEGER,
+    "userId" INTEGER
+);
 
 DROP TABLE IF EXISTS User;
 CREATE TABLE "User" (
