@@ -157,8 +157,10 @@ console.log(req);
       if (req) {
         const sql = `
         SELECT * FROM TaskItem
+        WHERE projectId = ${req.projectId}
         ORDER BY id DESC
         `;  
+console.log(sql);
         resulte = await env.DB.prepare(sql).all();
         //console.log(resulte);
         if(resulte.length < 1) {
