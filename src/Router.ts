@@ -1,5 +1,6 @@
 import testRouter from './routes/test';
 import todoRouter from './routes/todo';
+import userRouter from './routes/user';
 import sessionRouter from './routes/session';
 import repoNameRouter from './routes/RepoName';
 import repoCountRouter from './routes/RepoCount';
@@ -57,6 +58,13 @@ const Router = {
     if (pathname === "/todos/get_list") {
       response = await todoRouter.get_list(req, res, env);  
     }
+    //user
+    if (pathname === "/users/create") {
+      response = await userRouter.create(req, res, env);  
+    }
+    if (pathname === "/users/get") {
+      response = await userRouter.get(req, res, env);  
+    }    
     //session
     if (pathname === "/session/create") {
       response = await sessionRouter.create(req, res, env);  

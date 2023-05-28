@@ -13,20 +13,20 @@ console.log(req);
     try{
       if (req) {
         const sql = `
-        INSERT INTO todos ( title, content, completed, userId)
-        VALUES('${req.title}', '${req.content}', 0,  ${req.userId});
+        INSERT INTO User ( name, email, password, updatedAt)
+        VALUES('${req.name}', '${req.email}', '${req.password}',
+        CURRENT_TIMESTAMP
+        );
         `;
-//console.log(sql);
+console.log(sql);
         const resulte = await env.DB.prepare(sql).run();
-//console.log(resulte);
         if(resulte.success !== true) {
           console.error("Error, /create");
           throw new Error('Error , create');
         }
-        //id
+console.log(resulte);
         const sql_id = "SELECT last_insert_rowid() AS id;";
         const resultId = await env.DB.prepare(sql_id).all();
-//console.log(resultId);
         if(resultId.results.length < 1) {
           console.error("Error, resultId.length < 1");
           throw new Error('Error , create, SELECT last_insert_rowid');
@@ -34,6 +34,9 @@ console.log(req);
         const item_id = resultId.results[0].id;
 console.log("item_id=", item_id);
         req.id = item_id;
+
+//console.log(resultId);
+        //id
       }            
       return Response.json({ret: "OK", data: req});
     } catch (e) {
@@ -117,9 +120,10 @@ console.log(req);
     try{
       if (req) {
         const sql = `
-        SELECT * FROM todos
-        WHERE id = ${req.id}
-        `;        
+        SELECT * FROM User
+        WHERE email = '${req.email}'
+        `;     
+console.log(sql);   
         result = await env.DB.prepare(sql).all();
 //console.log(result.results);
         if(result.results.length < 1) {
@@ -134,36 +138,6 @@ console.log(req);
       return Response.json(retObj);
     } 
   }, 
-  /**
-  *
-  * @param
-  *
-  * @return
-  */ 
-  get_list: async function (req: any, res: any, env: any): Promise<Response>
-  {
-//    console.log(req);
-    let resulte: any = [];
-    const retObj = {ret: "NG", data: [], message: ''}
-    try{
-      let result: any = {};  
-      if (req) {
-        const sql = `
-        SELECT * FROM todos
-        ORDER BY id DESC
-        `;  
-        resulte = await env.DB.prepare(sql).all();
-        //console.log(resulte);
-        if(resulte.length < 1) {
-          console.error("Error, results.length < 1");
-          throw new Error('Error , get');
-        }              
-      }           
-      return Response.json({ret: "OK", data: resulte.results});
-    } catch (e) {
-      console.error(e);
-      return Response.json(retObj);
-    } 
-  },   
+ 
 }
 export default router;
