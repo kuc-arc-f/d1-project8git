@@ -28,7 +28,7 @@ export default {
 				console.log("Error, Common.validApiKey=false");
 				return Response.json(errorObj);
 			}
-//console.log(reqObj);
+console.log(reqObj);
 			const contentType = request.headers.get("content-type");
 			if(contentType !== "application/json") {
 				console.log("contentType=", contentType);

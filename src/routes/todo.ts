@@ -142,7 +142,7 @@ console.log(req);
   */ 
   get_list: async function (req: any, res: any, env: any): Promise<Response>
   {
-//    console.log(req);
+//console.log(req);
     let resulte: any = [];
     const retObj = {ret: "NG", data: [], message: ''}
     try{
@@ -150,8 +150,10 @@ console.log(req);
       if (req) {
         const sql = `
         SELECT * FROM todos
+        WHERE userId = ${req.userId}
         ORDER BY id DESC
         `;  
+//console.log(sql);
         resulte = await env.DB.prepare(sql).all();
         //console.log(resulte);
         if(resulte.length < 1) {
