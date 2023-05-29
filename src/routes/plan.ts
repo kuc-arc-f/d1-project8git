@@ -164,10 +164,14 @@ console.log(req);
         const sql = `
         SELECT id, userId, p_date, content FROM Plan
         WHERE 
-        p_date >= datetime('${req.start}', 'localtime')
-        AND p_date <= datetime('${req.end}', 'localtime')
+        (
+          p_date >= datetime('${req.start}', 'localtime')
+          AND p_date <= datetime('${req.end}', 'localtime')
+        )
+        AND userId = ${req.userId}
         ORDER BY p_date ASC
         `;  
+console.log(sql);
         resulte = await env.DB.prepare(sql).all();
 console.log(resulte);
         if(resulte.results.length < 1) {
