@@ -58,6 +58,9 @@ const Router = {
     if (pathname === "/todos/get_list") {
       response = await todoRouter.get_list(req, res, env);  
     }
+    if (pathname === "/todos/search") {
+      response = await todoRouter.search(req, res, env);  
+    }
     //user
     if (pathname === "/users/create") {
       response = await userRouter.create(req, res, env);  
@@ -130,6 +133,9 @@ const Router = {
     if (pathname === "/er_chart/update") {
       response = await erChartRouter.update(req, res, env);  
     }   
+    if (pathname === "/er_chart/search") {
+      response = await erChartRouter.search(req, res, env);  
+    }
     //taskItemRouter
     if (pathname === "/tasks/create") {
       response = await taskItemRouter.create(req, res, env);  
