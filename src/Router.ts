@@ -152,6 +152,10 @@ const Router = {
     if (pathname === "/tasks/update") {
       response = await taskItemRouter.update(req, res, env);  
     }
+    if (pathname === "/tasks/search") {
+      response = await taskItemRouter.search(req, res, env);  
+    }
+
     //projectRouter
     if (pathname === "/project/create") {
       response = await projectRouter.create(req, res, env);  
@@ -167,7 +171,10 @@ const Router = {
     }   
     if (pathname === "/project/update") {
       response = await projectRouter.update(req, res, env);  
-    }            
+    }   
+    if (pathname === "/project/search") {
+      response = await projectRouter.search(req, res, env);  
+    }
     //@ts-ignore
     return response;
   },
