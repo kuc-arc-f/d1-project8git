@@ -1,12 +1,12 @@
 ﻿# d1-project8git
 
- Version: 0.9.1
+ Version: 0.9.2
 
  Author  : Kouji Nakashima / kuc-arc-f.com
 
  date    : 2023/05/20
 
- update  : 2023/07/04
+ update  : 2023/07/19
 
 ***
 ### Summary

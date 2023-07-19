@@ -14,11 +14,13 @@ console.log(req);
       if (req) {
         const sql = `
         INSERT INTO TaskItem ( title, content, projectId, complete,
-          status, userId)
+          status, userId,
+          start_date)
         VALUES('${req.title}', '${req.content}', ${req.projectId},
         datetime('${req.complete}', 'localtime'), 
         '${req.status}',
-        ${req.userId}
+        ${req.userId},
+        datetime('${req.start_date}', 'localtime')
         );
         `;
 //console.log(sql);
@@ -93,6 +95,7 @@ console.log(req);
         SET title = '${req.title}',
         content='${req.content}',
         complete = datetime('${req.complete}', 'localtime'),
+        start_date = datetime('${req.start_date}', 'localtime'),
         status = '${req.status}'
         WHERE id = ${req.id}
         `;

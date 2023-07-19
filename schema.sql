@@ -76,6 +76,7 @@ CREATE TABLE "TaskItem" (
     "title" TEXT,
     "content" TEXT,
     "complete" DATETIME,
+    "start_date" DATETIME,
     "userId" INTEGER,
     "status" TEXT
 );
