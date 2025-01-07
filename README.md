@@ -2,11 +2,11 @@
 
  Version: 0.9.2
 
- Author  : Kouji Nakashima / kuc-arc-f.com
+ Author  :
 
  date    : 2023/05/20
 
- update  : 2023/07/19
+ update  : 2025/01/06
 
 ***
 ### Summary
