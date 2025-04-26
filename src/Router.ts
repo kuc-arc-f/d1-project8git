@@ -137,6 +137,10 @@ const Router = {
       response = await erChartRouter.search(req, res, env);  
     }
     //taskItemRouter
+    if (pathname === "/tasks/mcp_create") {
+      response = await taskItemRouter.mcp_create(req, res, env);  
+    }
+
     if (pathname === "/tasks/create") {
       response = await taskItemRouter.create(req, res, env);  
     }

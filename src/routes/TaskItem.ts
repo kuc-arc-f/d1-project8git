@@ -1,7 +1,56 @@
 //
 const router = {
   /**
-  * create
+  *
+  * @param
+  *
+  * @return
+  */
+  mcp_create: async function (req: any, res: any, env: any): Promise<Response>
+  {
+console.log(req);
+    const retObj = {ret: "NG", data: [], message: ''}
+    try{
+      if (req) {
+        const sql = `
+        INSERT INTO TaskItem ( title, content, projectId, complete,
+          status, userId,
+          start_date)
+        VALUES('${req.title}', '', ${req.project_id},
+        datetime('${req.end}', 'localtime'), 
+        '1',
+        0,
+        datetime('${req.start}', 'localtime')
+        );
+        `;
+//console.log(sql);
+        const resulte = await env.DB.prepare(sql).run();
+//console.log(resulte);
+        if(resulte.success !== true) {
+          console.error("Error, /mcp_create");
+          throw new Error('Error , mcp_create');
+        }
+        //id
+        const sql_id = "SELECT last_insert_rowid() AS id;";
+        const resultId = await env.DB.prepare(sql_id).all();
+//console.log(resultId);
+        if(resultId.results.length < 1) {
+          console.error("Error, resultId.length < 1");
+          throw new Error('Error , mcp_create, SELECT last_insert_rowid');
+        }
+        const item_id = resultId.results[0].id;
+console.log("item_id=", item_id);
+        req.id = item_id;
+      }            
+      return Response.json({ret: "OK", data: req});
+    } catch (e) {
+      console.error(e);
+      return Response.json(retObj);
+    } 
+  }, 
+
+  /**
+  *
   * @param
   *
   * @return
